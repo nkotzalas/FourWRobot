@@ -15,7 +15,7 @@
  * Structure that represents the pins of a motor shield 
  * that correspond to a dc motor
  */
-struct MotorSetup {
+typedef struct MotorSetup {
   int directionPin;
   int speedPin;
   int brakePin;

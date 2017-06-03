@@ -5,19 +5,22 @@
 	Created by Nick Kotzalas, December 30, 2016
 	Released into the public domain
 */
-
 #include "Arduino.h"
+#include "FourWRobot.h"
 
 #include <Wire.h>
 
-bool debugEnabled = false;
+bool fourWRobotDebugEnabled = false;
+
+struct MotorSetup _leftMotor;
+struct MotorSetup _rightMotor;
 
 /**
  * Constructor of the movement handler
  */
-FourWRobot::FourWRobot(bool debug, int trigPin, int echoPin)
+FourWRobot::FourWRobot(bool debug)
 {
-	debugEnabled = debug;
+	fourWRobotDebugEnabled = debug;
 }
 
 /**
@@ -43,7 +46,7 @@ void _brakeMovement(struct MotorSetup motor) {
  */
 void FourWRobot::setupLeftMotor(int directionPin, int speedPin, int brakePin, int currentPin)
 {
-	if (debugEnabled) {
+	if (fourWRobotDebugEnabled) {
 		Serial.println("Initializing the left motors...");
 	}
 
@@ -57,7 +60,7 @@ void FourWRobot::setupLeftMotor(int directionPin, int speedPin, int brakePin, in
 	// Initiate the brake of the left wheels (Channel A pin)
 	pinMode(_leftMotor.brakePin, OUTPUT);
 
-	if (debugEnabled) {
+	if (fourWRobotDebugEnabled) {
 		Serial.println("Left motors initialized");
 	}
 }
@@ -67,7 +70,7 @@ void FourWRobot::setupLeftMotor(int directionPin, int speedPin, int brakePin, in
  */
 void FourWRobot::setupRightMotor(int directionPin, int speedPin, int brakePin, int currentPin)
 {
-	if (debugEnabled) {
+	if (fourWRobotDebugEnabled) {
 		Serial.println("Initializing the right motors...");
 	}
 
@@ -81,7 +84,7 @@ void FourWRobot::setupRightMotor(int directionPin, int speedPin, int brakePin, i
 	// Initiate the brake of the right wheels (Channel A pin)
 	pinMode(_rightMotor.brakePin, OUTPUT);
 
-	if (debugEnabled) {
+	if (fourWRobotDebugEnabled) {
 		Serial.println("Right motors initialized");
 	}
 }
