@@ -34,19 +34,19 @@ void loop() {
       int incomingByte = Serial.read();
       if (incomingByte == 'N') {
         Serial.println("Forward");
-        robotCar.moveForward(100);
+        robot.moveForward(100);
       } else if (incomingByte == 'S') {
         Serial.println("Reverse");
-        robotCar.moveBackwards(100);
+        robot.moveBackwards(100);
       } else if (incomingByte == 'E') {
         Serial.println("Left");
-        robotCar.turnLeft(100);
+        robot.turnLeft(100);
       } else if (incomingByte == 'W') {
         Serial.println("Right");
-        robotCar.turnRight(100);
+        robot.turnRight(100);
       } else if (incomingByte == 'B') {
         Serial.println("Brake");
-        robotCar.brake();
+        robot.brake();
       }
   }  
 }
